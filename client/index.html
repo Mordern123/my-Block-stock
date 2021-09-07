@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Blockchain Stock Trading Platform</title>
+    <script src="jquery.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap&subset=chinese-traditional"
+        rel="stylesheet">
+    <!-- <script src="all.js"></script> -->
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="header">
+            <div id="mobile">
+                <a id="logo">
+                    <img src="./messageImage_1616227341681_0.jpg" width=30% height=15% /></a>
+                <ul class="menu">
+                    <li><a href="">
+                            <font face="Noto Sans TC">首頁</font>
+                        </a></li>
+                    <li><a href="Encyclopedia.php">
+                            <font face="Noto Sans TC">小百科</font>
+                        </a></li>
+                    <li id="intro"><a href="#">
+                            <font face="Noto Sans TC">關於我們</font>
+                        </a></li>
+                </ul>
+                <script>
+                    if ($(window).width() <= 798) {
+                        $(function () {
+                            var $mobile = $('#mobile'),
+                                $toggle = $mobile.find('#logo'),
+                                $menu = $mobile.find('.menu');
+
+                            $toggle.click(function (e) {
+                                $menu.slideToggle()
+                            });
+                        })
+                    }
+                </script>
+                <ul class="login">
+                    <li id="login"><a href="#">
+                            <font face="Noto Sans TC">登入/註冊</font>
+                        </a></li>
+                    <li id="contact"><a href="#">
+                            <font face="Noto Sans TC">聯絡我們</font>
+                        </a></li>
+                </ul>
+                <script>
+                    $(document).ready(function () {
+                        $(function () {
+                            $('#login').click(function () {
+                                $('html,body').animate({ scrollTop: $('#content1').offset().top }, 500);
+                            });
+                        });
+                    });
+                    $(document).ready(function () {
+                        $(function () {
+                            $('#contact').click(function () {
+                                $('html,body').animate({ scrollTop: $('.location').offset().top }, 500);
+                            });
+                        });
+                    });
+                    $(document).ready(function () {
+                        $(function () {
+                            $('#intro').click(function () {
+                                $('html,body').animate({ scrollTop: $('.content').offset().top }, 500);
+                            });
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+        <div class="BigLogo">
+            <img src="./images/cover.jpg" alt="">
+        </div>
+        <div class="clear"></div>
+
+        <div class="content">
+            <div class="infor">
+                <h2>
+                    <font face="Noto Sans TC">區塊鏈股票交易模擬平台 促使您財富自由</font>
+                </h2>
+                <p>
+                    <font face="Noto Sans TC">僅需勤奮練習，便能在股票界大展身手</font>
+                </p>
+            </div>
+
+            <div class="contentbox">
+
+                <div class="one">
+                    <div class="introImg">
+                        <img src="./images1.jfif" alt="">
+                    </div>
+                    <h2>
+                        <font face="Noto Sans TC">註冊會員</font>
+                    </h2>
+                    <p>
+                        <font face="Noto Sans TC">加入會員便可操作虛擬股票，這只需要花費您一點時間</font>
+                    </p>
+                </div>
+
+                <div class="two">
+                    <div class="introImg">
+                        <img src="./images.png" alt="">
+                    </div>
+                    <h2>
+                        <font face="Noto Sans TC">查詢與購買股票</font>
+                    </h2>
+                    <p>
+                        <font face="Noto Sans TC">登入會員後，可以進行查詢與購買股票</font>
+                    </p>
+                </div>
+
+                <div class="three">
+                    <div class="introImg">
+                        <img src="./images2.png" alt="">
+                    </div>
+                    <h2>
+                        <font face="Noto Sans TC">計算報酬率</font>
+                    </h2>
+                    <p>
+                        <font face="Noto Sans TC">我們將會計算你們購買股票的報酬率，讓你進入市場時無往不利</font>
+                    </p>
+                </div>
+
+
+            </div>
+            <div class="inforTitle">
+                <h2>
+                    <font face="Noto Sans TC">你不可不知道的區塊鏈小知識</font>
+                </h2>
+            </div>
+            <div class="inforBoard">
+                <div class="infor1">
+                    <div class="inforImg">
+                        <img src="images.jfif"
+                            alt="">
+                    </div>
+                    <h2>
+                        <font face="Noto Sans TC">分散式系統，保證你的資料不被竄改</font>
+                    </h2>
+                    <p>
+                        <font face="Noto Sans TC">區塊鏈有幾項特性：<br>
+                    </p>
+                    <p>
+                        1.交易透明，達到開放性<br>
+                    </p>
+                    <p>
+                        2.資料加密，達到匿名性<br>
+                    </p>
+                    <p>
+                        3.資料難以竄改，達到安全性<br>
+                    </p>
+                    <p>
+                        4.分散記錄所有交易，可追溯性<br>
+                    </p>
+                    <p>
+                        5.分散式系統，達到去中心化
+                    </p>     
+                </font>     
+                </div>
+                <div class="infor2">
+                    <div class="inforImg">
+                        <img src="blockchain-3750157_1280.jpg"
+                            alt="">
+                    </div>
+                    <h2>
+                        <font face="Noto Sans TC">不可忽視的區塊鏈熱潮</font>
+                    </h2>
+                    <p>
+                        <font face="Noto Sans TC">
+                            區塊鏈是種分散式系統，資料會儲存於節點之中，並與鏈上的其他節點共享訊息，其核心特徵是它們擁有去中心化的信息基礎架構，交易在被允許和記錄前，會由很多相關的節點一起去驗證，因此內容難以被竄改，而資料儲存方式就像會計做帳一樣，比較不同的是，並非儲存在特定伺服器上，且帳本內容是公開透明並紀錄在鏈上，每個節點都有機會和權力編輯內容，最終達到鏈上成員皆可共享訊息。</font>
+                    </p>
+                </div>
+            </div>
+
+            <div class="content1" id="content1">
+                <h2>
+                    <font face="Noto Sans TC">Sign In</font>
+                </h2>
+                <form action="login.php" method="POST">
+                    <input type="text" name="userid" placeholder="USERNAME">
+                    <input type="password" name="pwd" placeholder="PASSWORD">
+                    <div class="button-row">
+                        <input type="submit" class="sign-in" value="Sign In">
+                        <div class="clear"></div>
+                    </div>
+                </form>
+            </div>
+            <div class="content2">
+                <h2>
+                    <font face="Noto Sans TC">Sign Up</font>
+                </h2>
+                <form action="register.php" method="POST">
+                    <input type="email" name="email" placeholder="Enter your email address">
+                    <!-- <input type="text" name="userid" placeholder="这里输入文字"> -->
+                    <input type="text" name="username" placeholder="Enter User Name">
+                    <input type="password" name="pwd1" placeholder="Enter Password">
+                    <input type="password" name="pwd2" placeholder="Enter Password again">
+                    <input type="submit" name="submit" class="register" value="Register">
+                </form>
+            </div>
+        </div>
+
+
+
+
+        <div class="clear"></div>
+
+        <div class="location">
+            <div class="ourlocation">
+                <h2>
+                    <font face="Noto Sans TC">OUR LOCATION</font>
+                </h2>
+            </div>
+            <!-- <img src="http://fakeimg.pl/1280x250" alt=""> -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14566.081995761484!2d120.67154944970702!3d24.118352423816187!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe28afadc0dad203a!2z5ZyL56uL5Lit6IiI5aSn5a24!5e0!3m2!1szh-TW!2stw!4v1616226901949!5m2!1szh-TW!2stw"
+                 width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+        </div>
+        <div class="clear"></div>
+        <div class="contact">
+            <div class="c1">
+                <h2>
+                    <font face="Noto Sans TC">CONTACT US</font>
+                </h2>
+                <p1>
+                    <font face="Noto Sans TC">402台中市南區興大路145號</font>
+                </p1>
+                <p2>
+                    <font face="Noto Sans TC">TEL : 0989792308</font>
+                </p2>
+                <p3>
+                    <font face="Noto Sans TC">EMAIL : eeric55tw@gmail.com</font>
+                </p3>
+            </div>
+            <div class="c2">
+                <h3>
+                    <font face="Noto Sans TC">DONATE US</font>
+                </h3>
+                <a href="">
+                    <font face="Noto Sans TC">We need your help!!!</font>
+                </a>
+            </div>
+            <div class="c3">
+                <div class="message">
+                    <p>
+                        <font face="Noto Sans TC">Leave message to us...</font>
+                    </p>
+                    <input id="message" type="text" name="message">
+                </div>
+                <div class="submit">
+                    <input type="submit" value="Sumbit">
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+        <div class="footer">
+            <div class="footllist">
+                <ul>
+                    <li>
+                        <font face="Noto Sans TC">MADE BY NCHU</font>
+                    </li>
+                    <li><a href="">
+                            <font face="Noto Sans TC">使用說明</font>
+                        </a></li>
+                    <li><a href="">
+                            <font face="Noto Sans TC">最新消息</font>
+                        </a></li>
+                </ul>
+            </div>
+            <div class="footrlist">
+                <ul>
+                    <li><a href="">
+                            <font face="Noto Sans TC">網站使用條款</font>
+                        </a></li>
+                    <li><a href="">
+                            <font face="Noto Sans TC">隱私權政策</font>
+                        </a></li>
+                    <li><a href="">
+                            <font face="Noto Sans TC">免責聲明</font>
+                        </a></li>
+                    <li id="webname">
+                        <font face="Noto Sans TC">© 2021 區塊鏈股票交易模擬平台</font>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+</body>
+
+</html>
+
+
