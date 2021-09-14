@@ -30,6 +30,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+  background: linear-gradient(#141e30, #243b55);
 }
 ol, ul {
 	list-style: none;
@@ -107,6 +108,7 @@ table {
     text-decoration: none;
     outline: none;
     color: #706e6c;
+    font-size: 20px;
   }
   .menu li a:hover{
     color: #7C9090;
@@ -171,6 +173,7 @@ table {
   .one{
    height: 25%;
    width: 25%; 
+   color: gray;
    /* border: 1.5px solid rgb(30, 47, 66); */
   }
   .two{
@@ -178,17 +181,20 @@ table {
     width: 25%; 
     /* border: 1.5px solid rgb(30, 47, 66); */
     margin-left: 3%;
+    color: gray;
    }
    .three{
     height: 25%;
     width: 25%; 
     /* border: 1.5px solid rgb(30, 47, 66); */
     margin-left: 3%;
+    color: gray;
    }
    .one1{
     height: 15%;
     width: 25%; 
     border: 1.5px solid rgb(30, 47, 66);
+    
    }
    .two2{
      height: 15%;
@@ -1057,3 +1063,4 @@ table {
         height: 220px;
     }  
  }
+ 

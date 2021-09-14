@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Blockchain Stock Trading Platform</title>
+    <script src="jquery.js"></script>
+    <link rel="stylesheet" href="../css/Home.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <!-- <script src="all.js"></script> -->
+</head>
+
+<body>
+    
+    <div id="viewport">
+        <!-- Sidebar -->
+        <div id="sidebar">
+            <header>
+                <a href="#">股票交易區塊鏈系統</a>
+            </header>
+            <ul class="nav">
+                <li>
+                    <img src="../image/loupe.png" alt="">
+                    <a href="#">
+                        <i class="zmdi zmdi-view-dashboard"></i> 交易股票
+                    </a>
+                </li>
+                <li>
+                    <img src="../image/star.png" alt="">
+                    <a href="UserStock.html">
+                        <i class="zmdi zmdi-link"></i> 持有股票
+                    </a>
+                </li>
+                <li>
+                    <img src="../image/money.png" alt="">
+                    <a href="#">
+                        <i class="zmdi zmdi-widgets"></i> 目前獲利
+                    </a>
+                </li>
+                <li>
+                    <img src="../image/group.png" alt="">
+                    <a href="About.html">
+                        <i class="zmdi zmdi-calendar"></i> 關於我們
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- Content -->
+        <div class="container-fluid">
+            <h1>交易股票</h1>
+        </div>
+        <div class="wrap">
+            <div class="search">
+                <input type="text" class="searchTerm" placeholder="搜尋股票代號">
+                <button type="submit" class="searchButton" onclick="searchStock()">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+            
+        </div>
+        <script>
+            function searchStock() {
+                alert('您已經成功搜尋該股票');
+            }
+        </script>
+         <div class="stockInfo">
+            <ul>
+                <li>股票代號</li>
+                <li>股票名稱</li>
+                <li>現在價格</li>
+                <li>購買張數</li>
+            </ul>
+        </div> 
+        <div class="stockInfos">
+            <ul>
+                <li><input type="text" placeholder="輸入張數"></li>
+                <li><button>購買確認</button></li>
+            </ul>
+        </div> 
+    </div> 
+    
+</body>
+
+</html>

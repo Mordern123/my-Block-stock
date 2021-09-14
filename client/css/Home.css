@@ -1,0 +1,263 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
+
+body {
+  overflow-x: hidden;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+}
+
+/* Toggle Styles */
+
+#viewport {
+  padding-left: 250px;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#content {
+  width: 100%;
+  position: relative;
+  margin-right: 0;
+}
+
+/* Sidebar Styles */
+
+#sidebar {
+  z-index: 1000;
+  position: fixed;
+  left: 250px;
+  width: 250px;
+  height: 100%;
+  margin-left: -250px;
+  overflow-y: auto;
+  background: #37474F;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#sidebar header {
+  background-color: #263238;
+  font-size: 20px;
+  line-height: 52px;
+  text-align: center;
+}
+
+#sidebar header a {
+  color: #fff;
+  display: block;
+  text-decoration: none;
+}
+
+#sidebar header a:hover {
+  color: #fff;
+}
+
+#sidebar .nav{
+  
+}
+
+#sidebar .nav a{
+  background: none;
+  border-bottom: 1px solid #455A64;
+  color: #CFD8DC;
+  font-size: 18px;
+  padding: 16px 24px;
+}
+
+#sidebar .nav a:hover{
+  background: none;
+  color: #ECEFF1;
+}
+
+#sidebar .nav a i{
+  padding-right: 0px;
+}
+
+.nav li{
+  margin-top: 40px;
+  font-size: 20px;
+}
+.nav li img{
+  length: 15px;
+  width: 15px;
+  padding-left: 60px;
+  margin-right: -15px;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body{
+  background: #f2f2f2;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #243b55;
+  border-right: none;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #141e30;
+  font: small-caps bold 15px/1 sans-serif;
+}
+
+.searchTerm:focus{
+  color: #243b55;
+}
+
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #141e30;
+  background: #141e30;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 30%;
+  position: absolute;
+  top: 21%;
+  left: 38%;
+  transform: translate(-50%, -50%);
+}
+
+.container-fluid h1{
+  font-size: 35px;
+  padding-left: 40px;
+  padding-top: 30px;
+}
+.stockInfo li{
+  float:left;
+  margin-left: 56px;
+}
+
+.stockInfo {
+  width: 650px;
+  height: 30px;
+  margin-left: 30px;
+  margin-top: 150px;
+  border-bottom: solid;
+}
+
+.stockInfos li{
+  float:left;
+  margin-left: 56px;
+}
+
+.stockInfos ul{
+  padding-left: 56px;
+}
+
+.stockInfos input{
+  width: 60px;
+  height: 8px;
+  border: 2px solid #243b55;
+  padding: 5px;
+  border-radius: 5px 5px 5px 5px;
+  outline: none;
+  color: #141e30;
+  font: small-caps bold 10px/1 sans-serif;
+}
+
+
+.stockInfos button{
+  border-top: 1px solid #96d1f8;
+  background: #2c709e;
+  background: -webkit-gradient(linear, left top, left bottom, from(#0b2f47), to(#2c709e));
+  background: -webkit-linear-gradient(top, #0b2f47, #2c709e);
+  background: -moz-linear-gradient(top, #0b2f47, #2c709e);
+  background: -ms-linear-gradient(top, #0b2f47, #2c709e);
+  background: -o-linear-gradient(top, #0b2f47, #2c709e);
+  
+  -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+  -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+  box-shadow: rgba(0,0,0,1) 0 1px 0;
+  text-shadow: rgba(0,0,0,.4) 0 1px 0;
+  color: #f5f0f5;
+  font-family: Georgia, serif;
+  text-decoration: none;
+  vertical-align: middle;
+  }
+.stockInfos button:hover {
+  border-top-color: #091c29;
+  background: #091c29;
+  color: #ccc;
+  }
+.stockInfos button:active {
+  border-top-color: #02101a;
+  background: #02101a;
+  }
+
+.stockInfos {
+  width: 700px;
+  height: 30px;
+  float:right;
+  margin-top: 20px;
+  
+}
