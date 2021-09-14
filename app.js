@@ -5,6 +5,7 @@ import { getContractInstance, contract_call, contract_send } from "./function/co
 import StockManagement from "./build/contracts/StockManagement.json";
 import UserManagement from "./build/contracts/UserManagement.json";
 import path from "./path.json";
+import searchId from "./crawler.js";
 
 require("dotenv").config(); //環境變數 
 const app = express();  //建立一個express伺服器
@@ -51,6 +52,18 @@ const tradeBuy = async (req, res) => {
         res.json(trade_buy_stock);
 }
 
+// const id=1234;
+// const stock = async() => {
+//     const stockid = await searchId(id);
+//     console.log(stockid);
+// }
+const stock = async (req, res) => {
+    const { id } = req.query
+    const stockid = await searchId(id);
+    res.json(stockid);
+}
+// stock();
+app.post('/stock', stock);
 app.post('/create', create);
 app.get('/getUser', getUser);
 app.post('/create/tradeBuy', tradeBuy);
