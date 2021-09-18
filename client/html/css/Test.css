@@ -58,12 +58,13 @@ img{
   transform: translateY(-50%);
 }
 
-#intro .container li{
-    margin: 0px 35px;
+#intro i{
+    margin-right: 8px;
 }
 
-#intro i{
-    margin-left: 8px;
+#intro #kaggle {
+    margin-left: 1000px;
+    width: 120px;
 }
 
 header nav img{
@@ -85,6 +86,11 @@ header li{
 
 #second .card{
     margin-bottom: 30px;
+}
+
+#second .card img{
+    width: 120px;
+    margin-left: 750px;
 }
 
 #second .upper{
@@ -136,7 +142,12 @@ header li{
 
 #third{
     padding: 80px 0px;
-    background: #FAFAFA	;
+    background: #F5F5F5;
+}
+
+#third .card img{
+    width: 120px;
+    margin-left: 750px;
 }
 
 #third h3{

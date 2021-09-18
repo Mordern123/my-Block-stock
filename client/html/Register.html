@@ -34,7 +34,7 @@
         <input id="phoneNumber" type="text" name="" required="">
         <label>phone number</label>
       </div>
-      <button type="submit" id="create" onclick="registerUser()">
+      <button id="create" onclick="registerUser()">
         <span></span>
         <span></span>
         <span></span>
@@ -49,7 +49,7 @@
         let Password = document.getElementById("Password");
         let IDnumber = document.getElementById("IDnumber");
         let phoneNumber = document.getElementById("phoneNumber");
-        axios.post(`http://localhost:5000/create?id=${Account.value}&user_name=${Username.value}&password=${Password.value}&user_grade=${IDnumber.value}&user_major=${phoneNumber.value}`);
+        let registerId = axios.post(`http://localhost:5000/create?id=${Account.value}&user_name=${Username.value}&password=${Password.value}&user_grade=${IDnumber.value}&user_major=${phoneNumber.value}`);
         alert('您已經註冊成功');
         Account.value = '';
         Username.value = '';
@@ -57,9 +57,6 @@
         IDnumber.value = '';
         phoneNumber.value = '';
         document.location.href = "index.html";
-
-        // location.replace('http://localhost:5000/stock');
-        // window.location="index.html";
       }
     </script>
   </div>

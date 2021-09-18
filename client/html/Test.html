@@ -28,9 +28,14 @@
     <header>
         <div id="webTop" class="container">
             <nav class="navbar navbar-expand-lg navbar-light">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="#" onclick="lucky()">
                     <img src="./image/goose.png">
                 </a>
+                <script>
+                    function lucky(){
+                        alert("恭喜你找到中興鵝鵝，今天會有額外的好運降臨唷!");
+                    }
+                </script>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -73,18 +78,34 @@
     <section id="intro">
         <div class="jumbotron">
             <div class="container">
-                <div class="row justify-content-end">
-                    <li class="lead">持有金額<i class="fas fa-dollar-sign"></i></li>
-                    <li class="lead">股票價值<i class="fas fa-dollar-sign"></i></li>
+                <div class="row">
+                    <div id="money" class="card offset-md-7 text-left" style="width: 14rem;">
+                        <div class="card-header">
+                            <i class="fas fa-dollar-sign"></i>持有金額
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><i class="fas fa-dollar-sign"></i><span id="userMoney">2000000</span></li>
+                        </ul>
+                    </div>
+                    <div id="value" class="card" style="width: 14rem;">
+                        <div class="card-header">
+                            <i class="fas fa-dollar-sign"></i>股票價值
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><i class="fas fa-dollar-sign"></i><span id="userValue">0</span></li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div id="top" class="col-md-8 text-left">
                         <h1>股票交易區塊鏈系統</h1>
                         <p class="lead">追求財富自由?加入我們一起練習吧!</p>
                         <a class="btn2" href='#'>開始交易</a>
+                        <img id="kaggle" src="https://www.kaggle.com/static/images/datasets/Datasets_landing_illo.png">
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </section>
 
@@ -99,11 +120,14 @@
                                 <div class="card-header">
                                     貼心小提醒：
                                 </div>
+                                
                                 <div class="card-body">
-                                    <h5 class="card-title">您可以進行查詢或購買股票，在輸入您要查詢或購買的股票代碼後，網頁將會呈現該股票資訊。</h5>
+                                    <h5 class="card-title">您可以進行查詢或購買股票，在輸入您要查詢或購買的股票代碼後，網頁將會呈現該股票資訊。</h5><br>
                                     <p class="card-text">您也可以每天在這裡查詢相關股票的資訊，國定假日以及週末不會更新股票價格。</p>
+                                    <p class="card-text">點選下方股票資訊卡片，即可進行購買。</p>
                                     <a href="https://www.twse.com.tw/zh/holidaySchedule/holidaySchedule"
                                         class="btn btn-primary">股票收盤日查詢</a>
+                                    <img src="https://www.kaggle.com/static/images/education/km/learn-home-208h.png">
                                 </div>
                             </div>
                         </div>
@@ -121,10 +145,19 @@
                         </div>
                     </div>
                     <script>
-                        function searchStock() {
+                        async function searchStock() {
                             let input = document.getElementById("stock");
                             alert('您已經成功搜尋該股票');
-                            axios.post(`http://localhost:5000/stock?id=${input.value}`);
+                            let result = await axios.post(`http://localhost:5000/stock?id=${input.value}`);
+                            console.log(result.data);
+                            document.getElementById("stockId").textContent = result.data[1];
+                            document.getElementById("stockName").textContent = result.data[0];
+                            document.getElementById("stockPrice").textContent = result.data[2];
+                            document.getElementById("openPrice").textContent = result.data[3];
+                            document.getElementById("highPrice").textContent = result.data[4];
+                            document.getElementById("lowPrice").textContent = result.data[5];
+
+                            document.getElementById("buyId").textContent = result.data[1];
                         }
                     </script>
                 </div>
@@ -132,7 +165,51 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="outer">
-                        <button type="submit">
+                        <button type="submit" data-toggle="modal" data-target="#exampleModal">
+                            <div class="upper">
+                                <img src="./image/card.png">
+                                <div class="innertext">
+                                    <span>股票代號</span>
+                                    <h4><span id="stockId"></span></h4>
+                                </div>
+                            </div>
+                            <div class="lower">
+                                <h3>股票資訊</h3>
+                                <span>股票名稱：<span id="stockName"></span></span>
+                                <br>
+                                <span><i class="fas fa-dollar-sign"></i>現在價格：<span id="stockPrice"></span></span>
+                                <br>
+                                <span><i class="fas fa-hand-holding-usd"></i>開盤價格：<span id="openPrice"></span></span>
+                                <br>
+                                <span><i class="fas fa-sort-amount-up-alt"></i>今日最高：<span id="highPrice"></span></span>
+                                <br>
+                                <span><i class="fas fa-sort-amount-down"></i>今日最低：<span id="lowPrice"></span></span>
+                            </div>
+                        </button>
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">股票代號：<span id="buyId"></span></h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <input type="text" required="" placeholder="請輸入購買張數">
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">取消交易</button>
+                                  <button type="button" class="btn btn-primary">確定購買</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="outer">
+                        <button type="submit" data-toggle="modal" data-target="#exampleModal">
                             <div class="upper">
                                 <img src="./image/card.png">
                                 <div class="innertext">
@@ -141,19 +218,23 @@
                                 </div>
                             </div>
                             <div class="lower">
-                                <h3>股票名稱</h3>
-                                <span><i class="fas fa-dollar-sign"></i>股票名稱：</span>
+                                <h3>股票資訊</h3>
+                                <span>股票名稱：</span>
                                 <br>
                                 <span><i class="fas fa-dollar-sign"></i>現在價格：</span>
                                 <br>
-                                <span><i class="far fa-clock"></i>購買時間：</span>
+                                <span><i class="fas fa-hand-holding-usd"></i>開盤價格：</span>
+                                <br>
+                                <span><i class="fas fa-sort-amount-up-alt"></i>今日最高：<span id="highPrice"></span></span>
+                                <br>
+                                <span><i class="fas fa-sort-amount-down"></i>今日最低：<span id="lowPrice"></span></span>
                             </div>
                         </button>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="outer">
-                        <button type="submit">
+                        <button type="submit" data-toggle="modal" data-target="#exampleModal">
                             <div class="upper">
                                 <img src="./image/card.png">
                                 <div class="innertext">
@@ -162,33 +243,16 @@
                                 </div>
                             </div>
                             <div class="lower">
-                                <h3>股票名稱</h3>
-                                <span><i class="fas fa-dollar-sign"></i>買入價格：</span>
+                                <h3>股票資訊</h3>
+                                <span>股票名稱：</span>
                                 <br>
                                 <span><i class="fas fa-dollar-sign"></i>現在價格：</span>
                                 <br>
-                                <span><i class="far fa-clock"></i>購買時間：</span>
-                            </div>
-                        </button>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="outer">
-                        <button type="submit">
-                            <div class="upper">
-                                <img src="./image/card.png">
-                                <div class="innertext">
-                                    <span>股票代號</span>
-                                    <h4>2330</h4>
-                                </div>
-                            </div>
-                            <div class="lower">
-                                <h3>股票名稱</h3>
-                                <span><i class="fas fa-dollar-sign"></i>買入價格：</span>
+                                <span><i class="fas fa-hand-holding-usd"></i>開盤價格：</span>
                                 <br>
-                                <span><i class="fas fa-dollar-sign"></i>現在價格：</span>
+                                <span><i class="fas fa-sort-amount-up-alt"></i>今日最高：<span id="highPrice"></span></span>
                                 <br>
-                                <span><i class="far fa-clock"></i>購買時間：</span>
+                                <span><i class="fas fa-sort-amount-down"></i>今日最低：<span id="lowPrice"></span></span>
                             </div>
                         </button>
                     </div>
@@ -213,6 +277,7 @@
                                     <p class="card-text">您也可以在這裡查詢之前購買股票的資訊，國定假日以及週末不會更新股票價格。</p>
                                     <a href="https://www.twse.com.tw/zh/holidaySchedule/holidaySchedule"
                                         class="btn btn-primary">股票收盤日查詢</a>
+                                    <img src="https://www.kaggle.com/static/images/competitions/landing_header.png">
                                 </div>
                             </div>
                         </div>
@@ -335,14 +400,14 @@
                     <p>402台中市南區興大路145號<br>
                         TEL : 0989792308<br>
                         EMAIL : <a href="mailto:eeric55tw2gmail.com">eeric55tw@gmail.com</a>
-                    </p>   
-                                 
-                </div> 
+                    </p>
+
+                </div>
                 <div class="col-md-1 text-left">
                     <button id="goTop" class="btn btn-primary pull-right">
                         <i class="fas fa-angle-up"></i>
-                    </button> 
-                </div>       
+                    </button>
+                </div>
             </div>
         </div>
     </footer>

@@ -22,7 +22,7 @@
         <input id="Password" type="text" name="" required="">
         <label>Password</label>
       </div>
-      <button type="submit" id="login" onclick="loginUser()">
+      <button id="login" onclick="loginUser()">
         <span></span>
         <span></span>
         <span></span>
@@ -35,25 +35,19 @@
       async function loginUser() {
         let id = document.getElementById("Account");
         let password = document.getElementById("Password");
-        let result = await axios.get(`http://localhost:5000/getUser?id=${id.value}&password=${password.value}`);
-        // const list =[];
-        // const populateData = (data)=>{list.push(data)}
-        // let redata = result.then(function(response){
-        //    populateData(response.data);
-        //  });
-        console.log(result);
-        
-        if (result == "success") {
-          alert('您成功登入');
-          id.value = '';
-          password.value = '';
-          location.href = "Test.html";
-        } else {
-          alert('您登入失敗');
-          id.value = '';
-          password.value = '';
-        }
+        axios.get(`http://localhost:5000/getUser?id=${id.value}&password=${password.value}`)
+          .then((response) => { console.log(response.data) });
 
+        // if (redata == "success") {
+        //   alert('您成功登入');
+        //   id.value = '';
+        //   password.value = '';
+        //   location.href = "Test.html";
+        // } else {
+        //   alert('您登入失敗');
+        //   id.value = '';
+        //   password.value = '';
+        // }
       }
     </script>
   </div>

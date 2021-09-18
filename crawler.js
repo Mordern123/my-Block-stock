@@ -14,7 +14,7 @@ const searchId = async (id) => {
       // console.log("當前價格: " + data.msgArray[0].z);
       // console.log("最高價: " + data.msgArray[0].h);
       // console.log("最低價: " + data.msgArray[0].l);
-      stockarray = [data.msgArray[0].n, data.msgArray[0].c, data.msgArray[0].z];
+      stockarray = [data.msgArray[0].n, data.msgArray[0].c, data.msgArray[0].z, data.msgArray[0].o, data.msgArray[0].h, data.msgArray[0].l];
       //stockarray = data;
       return resolve(stockarray);
     });
