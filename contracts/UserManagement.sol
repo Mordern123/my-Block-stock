@@ -40,9 +40,19 @@ contract UserManagement {
     }
     
     //觀看註冊是否成功
-    function get_User(string memory _useraccount) public view returns(string memory, string memory, string memory, string memory, string memory, int, int, int, uint){
+    function get_User(string memory _useraccount, string memory user_password) public view returns(string memory){
+        
         userinformation memory ui = person[_useraccount];
-        return (ui.user_name, _useraccount, ui.user_password, ui.user_grade, ui.user_major, ui.user_cash, ui.user_stockvalue, ui.user_RateOfReturn, ui.user_calltime);
+        if(keccak256(abi.encodePacked(user_password)) == keccak256(abi.encodePacked(person[_useraccount].user_password))){
+            //登入成功
+            return "success";
+        }
+        else{
+            //密碼錯誤
+            return "fail";
+        }
+        
+        // return (ui.user_name, _useraccount, ui.user_password, ui.user_grade, ui.user_major, ui.user_cash, ui.user_stockvalue, ui.user_RateOfReturn, ui.user_calltime);
     }
     
     //觀看所有使用者

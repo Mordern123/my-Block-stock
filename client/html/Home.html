@@ -4,15 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Blockchain Stock Trading Platform</title>
-    <script src="jquery.js"></script>
-    <link rel="stylesheet" href="../css/Home.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./css/Home.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
     <!-- <script src="all.js"></script> -->
 </head>
 
 <body>
-    
+
     <div id="viewport">
         <!-- Sidebar -->
         <div id="sidebar">
@@ -21,25 +22,25 @@
             </header>
             <ul class="nav">
                 <li>
-                    <img src="../image/loupe.png" alt="">
+                    <img src="./image/loupe.png" alt="">
                     <a href="#">
                         <i class="zmdi zmdi-view-dashboard"></i> 交易股票
                     </a>
                 </li>
                 <li>
-                    <img src="../image/star.png" alt="">
+                    <img src="./image/star.png" alt="">
                     <a href="UserStock.html">
                         <i class="zmdi zmdi-link"></i> 持有股票
                     </a>
                 </li>
                 <li>
-                    <img src="../image/money.png" alt="">
+                    <img src="./image/money.png" alt="">
                     <a href="#">
                         <i class="zmdi zmdi-widgets"></i> 目前獲利
                     </a>
                 </li>
                 <li>
-                    <img src="../image/group.png" alt="">
+                    <img src="./image/group.png" alt="">
                     <a href="About.html">
                         <i class="zmdi zmdi-calendar"></i> 關於我們
                     </a>
@@ -52,34 +53,41 @@
         </div>
         <div class="wrap">
             <div class="search">
-                <input type="text" class="searchTerm" placeholder="搜尋股票代號">
+                <input id="stock" type="text" class="searchTerm" placeholder="搜尋股票代號">
                 <button type="submit" class="searchButton" onclick="searchStock()">
                     <i class="fa fa-search"></i>
                 </button>
             </div>
-            
+
         </div>
         <script>
             function searchStock() {
+                let input = document.getElementById("stock");
                 alert('您已經成功搜尋該股票');
+                axios.post(`http://localhost:5000/stock?id=${input.value}`);
             }
         </script>
-         <div class="stockInfo">
+        <div class="stockInfo">
             <ul>
                 <li>股票代號</li>
                 <li>股票名稱</li>
                 <li>現在價格</li>
                 <li>購買張數</li>
             </ul>
-        </div> 
+        </div>
         <div class="stockInfos">
+            <tr>
+                <td>1234</td>
+                <td>1234</td>
+                <td>1234</td>
+            </tr>
             <ul>
                 <li><input type="text" placeholder="輸入張數"></li>
                 <li><button>購買確認</button></li>
             </ul>
-        </div> 
-    </div> 
-    
+        </div>
+    </div>
+
 </body>
 
 </html>

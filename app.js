@@ -8,16 +8,14 @@ import path from "./path.json";
 import searchId from "./crawler.js";
 import UserData from "./models/UserModel.js";
 import  mongoose  from "mongoose";
+import cors from "cors";
 
 require("dotenv").config(); //環境變數 
 const app = express();  //建立一個express伺服器
 app.use(express.json()); //回應能使用json格式
 app.use(logger("dev")); //顯示呼叫的api在console畫面
-app.use(cors({
-    origin: ['http://localhost:3000',
-        'http://172.20.10.5:3000'],
-    credentials: true,
-}));
+app.use(cors());
+app.use('/stock', express.static(__dirname + '/client/html'));
 
 mongoose.connect('mongodb://localhost:27017/my-block-stock');
 const connection = mongoose.connection;
@@ -42,7 +40,7 @@ const create = async (req, res) => {
             from: accounts[0],
             gas: 6000000,
         })
-        res.json(set_user);
+    res.json(set_user);
     const userDB = await UserData({ //寫入UserData資料庫
         user_id: id,
         user_name: user_name,
@@ -53,15 +51,16 @@ const create = async (req, res) => {
 }
 //得到使用者資訊
 const getUser = async (req, res) => {
-    const { id } = req.query
+    const { id, password } = req.query
     const web3 = await connect_to_web3();
     const accounts = await web3.eth.getAccounts();
     const contract = await getContractInstance(web3, UserManagement.abi, UM_Addr);
-        const get_user = await contract_call(contract, 'get_User', [id], {
+        const get_user = await contract_call(contract, 'get_User', [id, password], {
             from: accounts[0],
             gas: 6000000,
         })
         res.json(get_user);
+    console.log("success call loginApi");
 }
 //得到使用者購買股票
 const tradeBuy = async (req, res) => {
@@ -84,6 +83,7 @@ const tradeBuy = async (req, res) => {
 const stock = async (req, res) => {
     const { id } = req.query
     const stockid = await searchId(id);
+    console.log(stockid);
     res.json(stockid);
 }
 // stock();

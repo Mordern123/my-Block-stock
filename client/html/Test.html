@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="./css/Test.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="jquery.js"></script>
+    <script src="https://kit.fontawesome.com/d444f6341f.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <div id="webTop" class="container">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="#">
+                    <img src="./image/goose.png">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">首頁 <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="buyBtn" class="nav-link" href="#">搜尋/購買股票</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="sellBtn" class="nav-link" href="#">查看/販賣股票</a>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            選單
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">個人帳戶</a>
+                            <a class="dropdown-item" href="About.html">關於我們</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">登出</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="intro">
+        <div class="jumbotron">
+            <div class="container">
+                <div class="row justify-content-end">
+                    <li class="lead">持有金額<i class="fas fa-dollar-sign"></i></li>
+                    <li class="lead">股票價值<i class="fas fa-dollar-sign"></i></li>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>股票交易區塊鏈系統</h1>
+                        <p class="lead">追求財富自由?加入我們一起練習吧!</p>
+                        <a class="btn2" href='#'>開始交易</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="second">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>搜詢/購買股票：</h3>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    貼心小提醒：
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">您可以進行查詢或購買股票，在輸入您要查詢或購買的股票代碼後，網頁將會呈現該股票資訊。</h5>
+                                    <p class="card-text">您也可以每天在這裡查詢相關股票的資訊，國定假日以及週末不會更新股票價格。</p>
+                                    <a href="https://www.twse.com.tw/zh/holidaySchedule/holidaySchedule"
+                                        class="btn btn-primary">股票收盤日查詢</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                                <input id="stock" type="text" class="form-control" placeholder="搜尋股票代號"
+                                    aria-label="Recipient's username" aria-describedby="button-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+                                        onclick="searchStock()"><i class="fas fa-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        function searchStock() {
+                            let input = document.getElementById("stock");
+                            alert('您已經成功搜尋該股票');
+                            axios.post(`http://localhost:5000/stock?id=${input.value}`);
+                        }
+                    </script>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="outer">
+                        <button type="submit">
+                            <div class="upper">
+                                <img src="./image/card.png">
+                                <div class="innertext">
+                                    <span>股票代號</span>
+                                    <h4>2330</h4>
+                                </div>
+                            </div>
+                            <div class="lower">
+                                <h3>股票名稱</h3>
+                                <span><i class="fas fa-dollar-sign"></i>股票名稱：</span>
+                                <br>
+                                <span><i class="fas fa-dollar-sign"></i>現在價格：</span>
+                                <br>
+                                <span><i class="far fa-clock"></i>購買時間：</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="outer">
+                        <button type="submit">
+                            <div class="upper">
+                                <img src="./image/card.png">
+                                <div class="innertext">
+                                    <span>股票代號</span>
+                                    <h4>2330</h4>
+                                </div>
+                            </div>
+                            <div class="lower">
+                                <h3>股票名稱</h3>
+                                <span><i class="fas fa-dollar-sign"></i>買入價格：</span>
+                                <br>
+                                <span><i class="fas fa-dollar-sign"></i>現在價格：</span>
+                                <br>
+                                <span><i class="far fa-clock"></i>購買時間：</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="outer">
+                        <button type="submit">
+                            <div class="upper">
+                                <img src="./image/card.png">
+                                <div class="innertext">
+                                    <span>股票代號</span>
+                                    <h4>2330</h4>
+                                </div>
+                            </div>
+                            <div class="lower">
+                                <h3>股票名稱</h3>
+                                <span><i class="fas fa-dollar-sign"></i>買入價格：</span>
+                                <br>
+                                <span><i class="fas fa-dollar-sign"></i>現在價格：</span>
+                                <br>
+                                <span><i class="far fa-clock"></i>購買時間：</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="third">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>查詢/販賣股票：</h3>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    貼心小提醒：
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">您可以點擊下方股票卡片進行股票交易。</h5>
+                                    <p class="card-text">您也可以在這裡查詢之前購買股票的資訊，國定假日以及週末不會更新股票價格。</p>
+                                    <a href="https://www.twse.com.tw/zh/holidaySchedule/holidaySchedule"
+                                        class="btn btn-primary">股票收盤日查詢</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="outer">
+                        <button type="submit">
+                            <div class="upper">
+                                <img src="./image/card.png">
+                                <div class="innertext">
+                                    <span>股票代號</span>
+                                    <h4>2330</h4>
+                                </div>
+                            </div>
+                            <div class="lower">
+                                <h3>股票名稱</h3>
+                                <span><i class="fas fa-dollar-sign"></i>買入價格：</span>
+                                <br>
+                                <span><i class="fas fa-dollar-sign"></i>現在價格：</span>
+                                <br>
+                                <span><i class="far fa-clock"></i>購買時間：</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="outer">
+                        <button type="submit">
+                            <div class="upper">
+                                <img src="./image/card.png">
+                                <div class="innertext">
+                                    <span>股票代號</span>
+                                    <h4>2330</h4>
+                                </div>
+                            </div>
+                            <div class="lower">
+                                <h3>股票名稱</h3>
+                                <span><i class="fas fa-dollar-sign"></i>買入價格：</span>
+                                <br>
+                                <span><i class="fas fa-dollar-sign"></i>現在價格：</span>
+                                <br>
+                                <span><i class="far fa-clock"></i>購買時間：</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="outer">
+                        <button type="submit">
+                            <div class="upper">
+                                <img src="./image/card.png">
+                                <div class="innertext">
+                                    <span>股票代號</span>
+                                    <h4>2330</h4>
+                                </div>
+                            </div>
+                            <div class="lower">
+                                <h3>股票名稱</h3>
+                                <span><i class="fas fa-dollar-sign"></i>買入價格：</span>
+                                <br>
+                                <span><i class="fas fa-dollar-sign"></i>現在價格：</span>
+                                <br>
+                                <span><i class="far fa-clock"></i>購買時間：</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="email">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-md-2 text-center">
+                    <h3>加入股票交易區塊鏈系統的Email List</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 offset-md-2 text-left">
+                    <p>讓我們網站更新就通知你吧!</p>
+                    <div class="input-group input-group-lg">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-default" placeholder="你的郵件">
+                        </div>
+                        <a class="btn1" href="#"><i class="fas fa-search"></i>提交</a>
+                    </div>
+                </div>
+            </div>
+
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 offet-md-2 text-left">
+                    <img src="./image/goose.png">
+                    <p>這裡有中興鵝幫你加持股票運氣</p>
+                </div>
+                <div class="col-md-4 text-left">
+                    <h4>連結</h4>
+                    <ul>
+                        <li><a href="#">主頁</a></li>
+                        <li><a href="#">購買股票</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="#">常見問題</a></li>
+                        <li><a href="#">聯絡我們</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 text-left">
+                    <h4>聯絡我們</h4>
+                    <p>402台中市南區興大路145號<br>
+                        TEL : 0989792308<br>
+                        EMAIL : <a href="mailto:eeric55tw2gmail.com">eeric55tw@gmail.com</a>
+                    </p>   
+                                 
+                </div> 
+                <div class="col-md-1 text-left">
+                    <button id="goTop" class="btn btn-primary pull-right">
+                        <i class="fas fa-angle-up"></i>
+                    </button> 
+                </div>       
+            </div>
+        </div>
+    </footer>
+    <script>
+        $(document).ready(function () {
+            $(function () {
+                $('#buyBtn').click(function () {
+                    $('html,body').animate({ scrollTop: $('#second').offset().top }, 500);
+                });
+            });
+        });
+        $(document).ready(function () {
+            $(function () {
+                $('#sellBtn').click(function () {
+                    $('html,body').animate({ scrollTop: $('#third').offset().top }, 500);
+                });
+            });
+        });
+        $(document).ready(function () {
+            $(function () {
+                $('.btn2').click(function () {
+                    $('html,body').animate({ scrollTop: $('#second').offset().top }, 500);
+                });
+            });
+        });
+        $(document).ready(function () {
+            $(function () {
+                $('#goTop').click(function () {
+                    $('html,body').animate({ scrollTop: $('#webTop').offset().top }, 500);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

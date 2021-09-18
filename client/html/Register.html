@@ -1,45 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="jquery.js"></script>
-    <link rel="stylesheet" href="../css/Register.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="./css/Register.css">
+  <title>註冊網頁</title>
 </head>
+
 <body>
-    <div class="login-box">
-        <h2>使用者註冊</h2>
-        <form>
-          <div class="user-box">
-            <input type="text" name="" required="">
-            <label>Username</label>
-          </div>
-          <div class="user-box">
-            <input type="text" name="" required="">
-            <label>Account</label>
-          </div>
-          <div class="user-box">
-            <input type="password" name="" required="">
-            <label>Password</label>
-          </div>
-          <div class="user-box">
-            <input type="text" name="" required="">
-            <label>ID number</label>
-          </div>
-          <div class="user-box">
-            <input type="text" name="" required="">
-            <label>phone number</label>
-          </div>
-          <a href="./index.html">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            Submit
-          </a>
-        </form>
+  <div class="login-box">
+    <h2>使用者註冊</h2>
+    <form>
+      <div class="user-box">
+        <input id="Account" type="text" name="" required="">
+        <label>Account</label>
       </div>
+      <div class="user-box">
+        <input id="Username" type="text" name="" required="">
+        <label>Username</label>
+      </div>
+      <div class="user-box">
+        <input id="Password" type="password" name="" required="">
+        <label>Password</label>
+      </div>
+      <div class="user-box">
+        <input id="IDnumber" type="text" name="" required="">
+        <label>ID number</label>
+      </div>
+      <div class="user-box">
+        <input id="phoneNumber" type="text" name="" required="">
+        <label>phone number</label>
+      </div>
+      <button type="submit" id="create" onclick="registerUser()">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Submit
+      </button>
+    </form>
+    <script>
+      function registerUser() {
+        let Account = document.getElementById("Account");
+        let Username = document.getElementById("Username");
+        let Password = document.getElementById("Password");
+        let IDnumber = document.getElementById("IDnumber");
+        let phoneNumber = document.getElementById("phoneNumber");
+        axios.post(`http://localhost:5000/create?id=${Account.value}&user_name=${Username.value}&password=${Password.value}&user_grade=${IDnumber.value}&user_major=${phoneNumber.value}`);
+        alert('您已經註冊成功');
+        Account.value = '';
+        Username.value = '';
+        Password.value = '';
+        IDnumber.value = '';
+        phoneNumber.value = '';
+        document.location.href = "index.html";
+
+        // location.replace('http://localhost:5000/stock');
+        // window.location="index.html";
+      }
+    </script>
+  </div>
 </body>
+
 </html>

@@ -1,34 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../jquery.js"></script>
-    <link rel="stylesheet" href="../css/index.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="Xㄅˋˋ-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="./css/index.css">
+  <title>Document</title>
 </head>
+
 <body>
-    <div class="login-box">
-        <h2>股票交易區塊鏈系統</h2>
-        <form>
-          <div class="user-box">
-            <input type="text" name="" required="">
-            <label>Account</label>
-          </div>
-          <div class="user-box">
-            <input type="password" name="" required="">
-            <label>Password</label>
-          </div>
-          <a href="./About.html">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            Login
-          </a>
-          <a href="./Register.html" class="register">註冊</a>
-        </form>
+  <div class="login-box">
+    <h2>股票交易區塊鏈系統</h2>
+    <form>
+      <div class="user-box">
+        <input id="Account" type="text" name="" required="">
+        <label>Account</label>
       </div>
+      <div class="user-box">
+        <input id="Password" type="text" name="" required="">
+        <label>Password</label>
+      </div>
+      <button type="submit" id="login" onclick="loginUser()">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Login
+      </button>
+      <a href="./Register.html" class="register">註冊</a>
+    </form>
+    <script>
+      async function loginUser() {
+        let id = document.getElementById("Account");
+        let password = document.getElementById("Password");
+        let result = await axios.get(`http://localhost:5000/getUser?id=${id.value}&password=${password.value}`);
+        // const list =[];
+        // const populateData = (data)=>{list.push(data)}
+        // let redata = result.then(function(response){
+        //    populateData(response.data);
+        //  });
+        console.log(result);
+        
+        if (result == "success") {
+          alert('您成功登入');
+          id.value = '';
+          password.value = '';
+          location.href = "Test.html";
+        } else {
+          alert('您登入失敗');
+          id.value = '';
+          password.value = '';
+        }
+
+      }
+    </script>
+  </div>
 </body>
+
 </html>
