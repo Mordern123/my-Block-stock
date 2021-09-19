@@ -96,7 +96,7 @@ contract StockManagement {
             stock[account][stockId].stock_NowPrice = stock_NowPrice;
             stock[account][stockId].stock_Number = stock[account][stockId].stock_Number + stock_Number;
             stock[account][stockId].stock_calltime = block.timestamp;
-            int expenseStock = stock_NowPrice * stock_Number * 1000;       //數量*價格 = 花費金額(傳入)
+            int expenseStock = stock_NowPrice * stock_Number;       //數量*價格 = 花費金額(傳入)
             (int cash, int value) = UM.get_UserMoney(account);             //拿到UserManage的cash跟value
             if(cash >= expenseStock){                       //判斷是否有錢買股票
                 cash = cash - expenseStock;                 //買股票後金額
@@ -181,14 +181,16 @@ contract StockManagement {
         bytes32 sell_bytes_stockId;
         assembly {
             sell_bytes_stockId := mload(add(stockId, 32))
-        }       
+        }
+        
         if(UM.user_IsExist(account)){
             if(stock[account][stockId].stock_Number >= stock_Number)  {
-                int earnStock = stock[account][stockId].stock_NowPrice * stock_Number * 1000;
+                int earnStock = stock[account][stockId].stock_NowPrice * stock_Number;
+                stock[account][stockId].stock_Number = stock[account][stockId].stock_Number - stock_Number;
                 (int cash, int value) = UM.get_UserMoney(account); 
-                cash = cash + earnStock;                    
-                value = value - earnStock;                  
-                UM.update_UserMoney(account, cash, value);   
+                cash = cash + earnStock;                    //賣股票後金額
+                value = value - earnStock;                  //賣股票後股票價值
+                UM.update_UserMoney(account, cash, value);   //回傳金額
                 
                 bytes32 []memory buyallStockData = buy_allStockData[account];
                 for(uint i=0 ; i < buyallStockData.length ; i++){
@@ -196,9 +198,10 @@ contract StockManagement {
                     if(temp == sell_bytes_stockId){
                         delete buy_allStockData[account][i];
                         test = test+3;
+                    //儲存購買的股票進入該帳號
+                    //buy_allStockData[account].pop(sell_bytes_stockId);
                     }
                 }
-                
             }  
         }
     }

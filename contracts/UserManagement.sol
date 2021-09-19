@@ -54,6 +54,12 @@ contract UserManagement {
         
         // return (ui.user_name, _useraccount, ui.user_password, ui.user_grade, ui.user_major, ui.user_cash, ui.user_stockvalue, ui.user_RateOfReturn, ui.user_calltime);
     }
+
+    function getMoney(string memory _useraccount) public view returns(int, int){
+        int cash = person[_useraccount].user_cash;
+        int value = person[_useraccount].user_stockvalue;
+        return (cash, value);
+    }
     
     //觀看所有使用者
     function get_allUser() public view returns(bytes32[] memory){

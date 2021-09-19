@@ -33,21 +33,33 @@
     </form>
     <script>
       async function loginUser() {
+        let redata = '';
         let id = document.getElementById("Account");
         let password = document.getElementById("Password");
-        axios.get(`http://localhost:5000/getUser?id=${id.value}&password=${password.value}`)
-          .then((response) => { console.log(response.data) });
-
-        // if (redata == "success") {
-        //   alert('您成功登入');
-        //   id.value = '';
-        //   password.value = '';
-        //   location.href = "Test.html";
-        // } else {
-        //   alert('您登入失敗');
-        //   id.value = '';
-        //   password.value = '';
-        // }
+        let result = axios.get(`http://localhost:5000/getUser?id=${id.value}&password=${password.value}`)
+          .then((response) => {
+            redata = response.data;
+          })
+          .then(function () {
+            if (redata == "success") {
+              alert('您成功登入');
+              id.value = '';
+              password.value = '';
+              location.href = "Test.html";
+            } else {
+              alert('您登入失敗');
+              id.value = '';
+              password.value = '';
+            }
+          });
+        if (redata == "success") {
+          console.log("3~~~"+redata);
+          id.value = '';
+          password.value = '';
+        } else {
+          id.value = '';
+          password.value = '';
+        }
       }
     </script>
   </div>
