@@ -102,7 +102,8 @@
                             .then((response) => {
                                 document.getElementById("userMoney").textContent = response.data[0];
                                 document.getElementById("userValue").textContent = response.data[1];
-                            })
+                            });
+
                     </script>
                 </div>
                 <div class="row">
@@ -232,7 +233,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="outer">
-                        <button type="submit" data-toggle="modal" data-target="#exampleModal">
+                        <button type="button">
                             <div class="upper">
                                 <img src="./image/card.png">
                                 <div class="innertext">
@@ -319,10 +320,11 @@
                     </div>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-md-4">
                     <div class="outer">
-                        <button type="submit">
+                        <button type="submit" data-toggle="modal" data-target="#exampleModalLong">
                             <div class="upper">
                                 <img src="./image/card.png">
                                 <div class="innertext">
@@ -341,6 +343,28 @@
                                 <span><i class="far fa-clock"></i>搜尋時間：<span id="UserstockTime"></span></span>
                             </div>
                         </button>
+                        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">股票代號：<span
+                                                id="Userstockid1"></span></h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input id="sellNumber" type="text" required="" placeholder="請輸入賣出張數">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">取消交易</button>
+                                        <button type="button" class="btn btn-primary" onclick="sellStock()" data-dismiss="modal">確定賣出</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <script>
                             async function getStock() {
                                 let inputStockid = document.getElementById("try");
@@ -353,7 +377,15 @@
                                         document.getElementById("UserstockNowPrice").textContent = response.data[2];
                                         document.getElementById("UserstockNumber").textContent = response.data[3];
                                         document.getElementById("UserstockTime").textContent = Date(response.data[4]);
+
+                                        document.getElementById("Userstockid1").textContent = response.data[1];
                                     })
+                            }
+                            async function sellStock() {
+                                let sellNumber = document.getElementById("sellNumber");
+                                let sellStockId = document.getElementById("Userstockid").textContent;
+                                alert('您成功賣出該股票');
+                                let buyResult = await axios.post(`http://localhost:5000/tradeSell?stockid=${sellStockId}&stock_number=${sellNumber.value}`);
                             }
                         </script>
                     </div>
