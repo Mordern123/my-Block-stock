@@ -39,6 +39,8 @@ img{
     padding: 1px 3px;
 }
 
+
+
 #intro .jumbotron{
     height:70vh;
     margin-bottom: 0px;
@@ -78,6 +80,11 @@ header li{
 
 #second{
     padding: 60px 0px;
+}
+
+#second .upper img{  
+    width: 350px;
+    height: 200px;
 }
 
 #second h3{

@@ -84,8 +84,8 @@
                             <i class="fas fa-dollar-sign"></i>持有金額(單位：台幣)
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><i class="fas fa-dollar-sign"></i><span
-                                    id="userMoney">2000000</span></li>
+                            <li class="list-group-item"><i class="fas fa-dollar-sign"></i><span id="userMoney"></span>
+                            </li>
                         </ul>
                     </div>
                     <div id="value" class="card" style="width: 14rem;">
@@ -93,7 +93,7 @@
                             <i class="fas fa-dollar-sign"></i>股票價值(單位：台幣)
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><i class="fas fa-dollar-sign"></i><span id="userValue">0</span>
+                            <li class="list-group-item"><i class="fas fa-dollar-sign"></i><span id="userValue"></span>
                             </li>
                         </ul>
                     </div>
@@ -168,6 +168,10 @@
                             document.getElementById("lowPrice").textContent = result.data[5];
 
                             document.getElementById("buyId").textContent = result.data[1];
+
+                            // let insertDiv = document.getElementById("stockId");
+                            // insertDiv.innerHTML = result.data[1];
+                            // document.getElementById("insert").appendChild(insertDiv);
                         }
                         async function buyStock() {
                             let buyNumber = document.getElementById("buyNumber");
@@ -187,7 +191,8 @@
                     <div class="outer">
                         <button type="submit" data-toggle="modal" data-target="#exampleModal">
                             <div class="upper">
-                                <img src="./image/card.png">
+                                <img
+                                    src="https://storage.googleapis.com/kaggle-competitions/kaggle/27233/logos/opt.gif">
                                 <div class="innertext">
                                     <span>股票代號</span>
                                     <h4><span id="stockId"></span></h4>
@@ -231,54 +236,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="outer">
-                        <button type="button">
-                            <div class="upper">
-                                <img src="./image/card.png">
-                                <div class="innertext">
-                                    <span>股票代號</span>
-                                    <h4>2330</h4>
-                                </div>
-                            </div>
-                            <div class="lower">
-                                <h3>股票資訊</h3>
-                                <span>股票名稱：</span>
-                                <br>
-                                <span><i class="fas fa-dollar-sign"></i>現在價格：</span>
-                                <br>
-                                <span><i class="fas fa-hand-holding-usd"></i>開盤價格：</span>
-                                <br>
-                                <span><i class="fas fa-sort-amount-up-alt"></i>今日最高：<span id="highPrice"></span></span>
-                                <br>
-                                <span><i class="fas fa-sort-amount-down"></i>今日最低：<span id="lowPrice"></span></span>
-                            </div>
-                        </button>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="outer">
-                        <button type="submit" data-toggle="modal" data-target="#exampleModal">
-                            <div class="upper">
-                                <img src="./image/card.png">
-                                <div class="innertext">
-                                    <span>股票代號</span>
-                                    <h4>2330</h4>
-                                </div>
-                            </div>
-                            <div class="lower">
-                                <h3>股票資訊</h3>
-                                <span>股票名稱：</span>
-                                <br>
-                                <span><i class="fas fa-dollar-sign"></i>現在價格：</span>
-                                <br>
-                                <span><i class="fas fa-hand-holding-usd"></i>開盤價格：</span>
-                                <br>
-                                <span><i class="fas fa-sort-amount-up-alt"></i>今日最高：<span id="highPrice"></span></span>
-                                <br>
-                                <span><i class="fas fa-sort-amount-down"></i>今日最低：<span id="lowPrice"></span></span>
-                            </div>
-                        </button>
+                <div class="col-md-8">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://mis.twse.com.tw/stock/fibest.jsp?"
+                            allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
@@ -360,7 +321,8 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-dismiss="modal">取消交易</button>
-                                        <button type="button" class="btn btn-primary" onclick="sellStock()" data-dismiss="modal">確定賣出</button>
+                                        <button type="button" class="btn btn-primary" onclick="sellStock()"
+                                            data-dismiss="modal">確定賣出</button>
                                     </div>
                                 </div>
                             </div>
@@ -379,7 +341,8 @@
                                         document.getElementById("UserstockTime").textContent = Date(response.data[4]);
 
                                         document.getElementById("Userstockid1").textContent = response.data[1];
-                                    })
+                                    });
+                                alert("您成功搜尋該股票");
                             }
                             async function sellStock() {
                                 let sellNumber = document.getElementById("sellNumber");
@@ -390,46 +353,10 @@
                         </script>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="outer">
-                        <button type="submit">
-                            <div class="upper">
-                                <img src="./image/card.png">
-                                <div class="innertext">
-                                    <span>股票代號</span>
-                                    <h4>2330</h4>
-                                </div>
-                            </div>
-                            <div class="lower">
-                                <h3>股票名稱：</h3>
-                                <span><i class="fas fa-dollar-sign"></i>買入價格：</span>
-                                <br>
-                                <span><i class="fas fa-dollar-sign"></i>現在價格：</span>
-                                <br>
-                                <span><i class="far fa-clock"></i>購買時間：</span>
-                            </div>
-                        </button>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="outer">
-                        <button type="submit">
-                            <div class="upper">
-                                <img src="./image/card.png">
-                                <div class="innertext">
-                                    <span>股票代號</span>
-                                    <h4>2330</h4>
-                                </div>
-                            </div>
-                            <div class="lower">
-                                <h3>股票名稱：</h3>
-                                <span><i class="fas fa-dollar-sign"></i>買入價格：</span>
-                                <br>
-                                <span><i class="fas fa-dollar-sign"></i>現在價格：</span>
-                                <br>
-                                <span><i class="far fa-clock"></i>購買時間：</span>
-                            </div>
-                        </button>
+                <div class="col-md-8">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://mis.twse.com.tw/stock/fibest.jsp?"
+                            allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
